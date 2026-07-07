@@ -15,7 +15,11 @@
     };
   };
 
-  home.packages = [ pkgs.claude-code ];
+  home.packages = [
+    pkgs.claude-code
+    pkgs.azure-cli
+    pkgs.kubectl
+  ];
 
   programs.git = {
       enable = true;
@@ -33,6 +37,11 @@
         };
       };
     };  
+
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-bin-25;
+  };
 
   programs.ripgrep.enable = true;
 
