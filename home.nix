@@ -11,7 +11,7 @@
     enable = true;
     settings = {
       theme = "default";
-      editor.line-number = "relative";
+      # editor.line-number = "relative";
     };
   };
 
@@ -21,6 +21,7 @@
     pkgs.kubectl
     pkgs.kubelogin
     pkgs.uv
+    pkgs.lazygit
   ];
 
   programs.git = {
@@ -33,6 +34,7 @@
         };
         init.defaultBranch = "main";
         alias.st = "status";
+        alias.ll = "log --oneline --graph";
         core = {
           autocrlf = false;
           eol = "lf";
@@ -50,6 +52,7 @@
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   programs.gh = {
@@ -92,17 +95,33 @@
     '';
   };
   
-  programs.bash = {
+  programs.zsh = {
     enable = true;
+    initContent = ''
+      # Source Nix profile so nix, home-manager, and installed packages are on PATH
+      if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+        source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      fi
+      if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+        source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+      fi
+    '';
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
   };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 }
