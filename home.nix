@@ -19,6 +19,8 @@
     pkgs.claude-code
     pkgs.azure-cli
     pkgs.kubectl
+    pkgs.kubelogin
+    pkgs.uv
   ];
 
   programs.git = {
