@@ -1,0 +1,25 @@
+# Nix build results
+result
+result-*
+
+# direnv
+.direnv/
+.envrc
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets (never commit these)
+secrets.yaml
+secrets.nix
+*.age
+*.pem
+*.key
