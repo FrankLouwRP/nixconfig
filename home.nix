@@ -11,7 +11,6 @@
     enable = true;
     settings = {
       theme = "default";
-      # editor.line-number = "relative";
     };
   };
 
@@ -42,6 +41,7 @@
       };
     };  
 
+  programs.bash.enable = true;
   programs.java = {
     enable = true;
     package = pkgs.temurin-bin-25;
@@ -52,7 +52,6 @@
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
-    enableZshIntegration = true;
   };
 
   programs.gh = {
@@ -95,33 +94,18 @@
     '';
   };
   
-  programs.zsh = {
-    enable = true;
-    initContent = ''
-      # Source Nix profile so nix, home-manager, and installed packages are on PATH
-      if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
-        source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-      fi
-      if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-        source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-      fi
-    '';
-  };
-
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
-    enableZshIntegration = true;
   };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
     enableBashIntegration = true;
-    enableZshIntegration = true;
   };
 }
