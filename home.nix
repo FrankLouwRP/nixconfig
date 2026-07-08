@@ -15,6 +15,7 @@
   };
 
   home.packages = [
+    pkgs.home-manager
     pkgs.claude-code
     pkgs.azure-cli
     pkgs.kubectl
@@ -64,6 +65,7 @@
 
   programs.tmux = {
     enable = true;
+    shell = "${pkgs.bash}/bin/bash";
     prefix = "C-a";
     mouse = true;
     historyLimit = 10000;
